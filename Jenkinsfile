@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+        agent {
+        label 'linux && docker' // Tourne sur un agent qui a l'étiquette 'linux' ET 'docker'
+    }
 
     parameters {
         choice(name: 'ENVIRONMENT', choices: ['staging', 'production'], description: 'Choisir l\'environnement de déploiement')
