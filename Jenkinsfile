@@ -8,6 +8,8 @@ pipeline {
         booleanParam(name: 'RUN_TESTS', defaultValue: true, description: 'Lancer les tests ?')
         string(name: 'APP_VERSION', defaultValue: '1.0.0', description: 'Version de l\'application')
     }
+
+
     stages {
         stage('Check Agent') {
             steps {
@@ -15,9 +17,6 @@ pipeline {
                 sh 'whoami && uname -a && docker --version'
             }
         }
-    }
-    
-    stages {
         stage('Build Info') {
             steps {
                 echo "-----------------------------"
