@@ -10,7 +10,11 @@ pipeline {
     stages {
         stage('Build Info') {
             steps {
-                echo "Déploiement de la version ${params.APP_VERSION} sur l'environnement : ${params.ENVIRONMENT}"
+                echo "-----------------------------"
+                echo "📦 Version de l'application : ${params.APP_VERSION}"
+                echo "🌍 Environnement choisi      : ${params.ENVIRONMENT}"
+                echo "🧪 Lancer les tests ?        : ${params.RUN_TESTS}"
+                echo "-----------------------------"
             }
         }
 
@@ -19,7 +23,8 @@ pipeline {
                 expression { return params.RUN_TESTS }
             }
             steps {
-                echo "Lancement des tests..."
+                echo "✅ Lancement des tests automatiques en cours..."
+                // Exemple : sh 'npm test' ou autre
             }
         }
     }
