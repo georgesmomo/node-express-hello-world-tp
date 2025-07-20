@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'linux && docker' // Tourne sur un agent qui a l'étiquette 'linux' ET 'docker'
+        label 'nodejs' // Tourne sur un agent qui a l'étiquette 'linux' ET 'docker'
     }
 
     parameters {
@@ -26,7 +26,15 @@ pipeline {
                 echo "-----------------------------"
             }
         }
-
+        stage('Run inside Pod') {
+            steps {
+                // Pour exécuter une commande dans le container 'nodejs'
+                container('nodejs') { 
+                    sh 'node --version'
+                    sh 'npm --version'
+                }
+            }
+        }
         stage('Test') {
             when {
                 expression { return params.RUN_TESTS }
