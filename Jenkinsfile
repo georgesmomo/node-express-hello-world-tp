@@ -1,7 +1,19 @@
 pipeline {
-    agent {
-        label 'nodejs || linux && docker' // Tourne sur un agent qui a l'étiquette 'linux' ET 'docker'
+  agent {
+    kubernetes {
+      label 'k8s-agent'
+      defaultContainer 'jnlp'
+      yaml """
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  - name: jnlp
+    image: jenkins/inbound-agent
+    args: ['\$(JENKINS_SECRET)', '\$(JENKINS_NAME)']
+"""
     }
+  }
 
     parameters {
         choice(name: 'ENVIRONMENT', choices: ['staging', 'production'], description: 'Choisir l\'environnement de déploiement')
