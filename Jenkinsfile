@@ -30,10 +30,11 @@ pipeline {
             steps {
                 // Pour exécuter une commande dans le container 'nodejs'
                 echo "Pour exécuter une commande dans le container 'nodejs'"
-                container('nodejs') { 
+                //je commente, car le container n'est pas configuré sur jenkins; 
+                /*container('nodejs') { 
                     sh 'node --version'
                     sh 'npm --version'
-                }
+                }*/
             }
         }
         stage('Test') {
