@@ -1,7 +1,7 @@
 pipeline {
   agent {
     kubernetes {
-      label 'nodejs'
+      inheritFrom 'nodejs'
       defaultContainer 'jnlp'
       yaml """
 apiVersion: v1
