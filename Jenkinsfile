@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'nodejs' // Tourne sur un agent qui a l'étiquette 'linux' ET 'docker'
+        label 'nodejs || linux && docker' // Tourne sur un agent qui a l'étiquette 'linux' ET 'docker'
     }
 
     parameters {
