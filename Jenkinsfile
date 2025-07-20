@@ -29,6 +29,7 @@ pipeline {
         stage('Run inside Pod') {
             steps {
                 // Pour exécuter une commande dans le container 'nodejs'
+                echo "Pour exécuter une commande dans le container 'nodejs'"
                 container('nodejs') { 
                     sh 'node --version'
                     sh 'npm --version'
